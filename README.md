@@ -44,6 +44,12 @@ You can omit port number and run on port from config (`application:get_env(epmdl
 
     $ iex --erl "-proto_dist epmdless -start_epmd false -epmd_module epmdless_epmd_client -pa _build/${MIX_ENV:-dev}/lib/epmdless/ebin/" --sname foll -S mix
 
+Running with config
+
+    $ iex --erl "-proto_dist epmdless -start_epmd false -epmd_module epmdless_epmd_client -pa _build/${MIX_ENV:-dev}/lib/epmdless/ebin/ -config config/sys.config" --sname foll -S mix
+
+Note that you mas specify erlang config. Elixir config can't work there because it starts after epmd client.
+
 In order to connect with remsh run something like this
 
     $ iex --erl "-proto_dist epmdless -start_epmd false -epmd_module epmdless_epmd_client -pa _build/${MIX_ENV:-dev}/lib/epmdless/ebin" --remsh foo_port4379@localhost --sname foo
